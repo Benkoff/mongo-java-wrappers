@@ -1,3 +1,2 @@
 server:
     port: 8083
-    context-path: /spring-boot-morphia

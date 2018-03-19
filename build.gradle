@@ -37,6 +37,8 @@ subprojects {
     dependencies {
         compile 'org.springframework.boot:spring-boot-starter'
         compile 'org.projectlombok:lombok:1.16.10'
+        // https://mvnrepository.com/artifact/de.grundid.opendatalab/geojson-jackson
+        compile group: 'de.grundid.opendatalab', name: 'geojson-jackson', version: '1.8'
         testCompile 'org.springframework.boot:spring-boot-starter-test'
     }
 
