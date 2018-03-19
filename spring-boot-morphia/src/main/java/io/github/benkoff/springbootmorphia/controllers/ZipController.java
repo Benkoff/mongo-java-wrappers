@@ -31,11 +31,11 @@ public class ZipController {
     }
 
     @RequestMapping(value = "/", method = GET)
-    Integer count() {
+    public Integer count() {
         return datastore.find(Zip.class).asList().size();
     }
 
-//    List<Zip> findAll() {
+//    public List<Zip> findAll() {
 //        return datastore.find(Zip.class).asList();
 //    }
 
