@@ -1,0 +1,93 @@
+buildscript {
+	ext {
+		springBootVersion = '2.0.0.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+repositories {
+    mavenCentral()
+}
+
+allprojects {
+    apply plugin: 'java'
+    apply plugin: 'idea'
+    group 'io.github.benkoff'
+}
+
+subprojects {
+    apply plugin: 'application'
+    apply plugin: 'org.springframework.boot'
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    tasks.withType(JavaCompile) {
+        options.encoding = 'UTF-8'
+    }
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        compile 'org.springframework.boot:spring-boot-starter'
+        compile 'org.projectlombok:lombok:1.16.10'
+        testCompile 'org.springframework.boot:spring-boot-starter-test'
+    }
+
+    test.testLogging {
+        events "skipped", "failed"
+        exceptionFormat "SHORT"
+        showStandardStreams = true
+    }
+
+    test {
+        afterTest { desc, result ->
+            println "Executing test ${desc.name} [${desc.className}] with result: ${result.resultType}"
+        }
+    }
+}
+
+project(':spring-boot-data-mongodb') {
+    jar {
+        baseName = "spring-boot-data-mongodb"
+        version = '0.0.1-SNAPSHOT'
+    }
+
+    mainClassName = "java.io.github.benkoff.springbootdatamongodb.SpringBootDataMongodbApplication"
+
+    dependencies {
+		
+    }
+}
+
+project(':spring-boot-mongo-java') {
+    jar {
+        baseName = "spring-boot-mongo-java"
+        version = '0.0.1-SNAPSHOT'
+    }
+
+    mainClassName = "java.io.github.benkoff.springbootmongojava.SpringBootMongoJavaApplication"
+
+    dependencies {
+	
+    }
+}
+
+project(':spring-boot-morphia') {
+    jar {
+        baseName = "spring-boot-morphia"
+        version = '0.0.1-SNAPSHOT'
+    }
+
+    mainClassName = "java.io.github.benkoff.springbootmorphia.SpringBootMorphiaApplication"
+
+    dependencies {
+	
+    }
+}

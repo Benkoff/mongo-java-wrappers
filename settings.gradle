@@ -1,0 +1,2 @@
+rootProject.name = 'mongo-drivers'
+include 'spring-boot-data-mongodb', 'spring-boot-mongo-java', 'spring-boot-morphia'
