@@ -1,2 +1,7 @@
 server:
-    port: 8083
+  port: 8083
+logging:
+  level:
+    io.github.benkoff.springbootmorphia: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"

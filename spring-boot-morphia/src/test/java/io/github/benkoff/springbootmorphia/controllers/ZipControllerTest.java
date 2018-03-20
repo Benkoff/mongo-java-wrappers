@@ -9,7 +9,7 @@ public class ZipControllerTest {
 
     @Test
     public void countShoudReturnExpectedValue() {
-        Integer expected = 29353;
+        int expected = 29353;
 
         //TODO this test as an integration test
     }

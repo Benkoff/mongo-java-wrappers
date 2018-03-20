@@ -11,3 +11,6 @@ compile group: 'org.mongodb', name: 'mongo-java-driver', version: '3.6.3'
 ## <a href = "https://mongodb.github.io/morphia/">Morphia</a>
 // https://mvnrepository.com/artifact/org.mongodb.morphia/morphia <br>
 compile group: 'org.mongodb.morphia', name: 'morphia', version: '1.3.2'
+
+unzip zips.zip
+mongoimport --drop -d drivers -c zips zips.json

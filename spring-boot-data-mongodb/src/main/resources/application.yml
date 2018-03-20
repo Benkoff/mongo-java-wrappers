@@ -4,4 +4,4 @@ spring:
   data:
     mongodb:
       host: 'localhost'
-      database: 'agg'
+      database: 'drivers'
