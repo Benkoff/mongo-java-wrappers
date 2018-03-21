@@ -1,6 +1,7 @@
 package io.github.benkoff.springbootdatamongodb.controllers;
 
 import io.github.benkoff.springbootdatamongodb.domain.Zip;
+import io.github.benkoff.springbootdatamongodb.repositories.ZipRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
@@ -23,9 +23,10 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 public class ZipController {
 
     private Zip zips;
+    private ZipRepository repository;
 
-    public ZipController() {
-
+    public ZipController(ZipRepository repository) {
+        this.repository = repository;
     }
 
     @RequestMapping(value = "/", method = GET)
@@ -35,8 +36,7 @@ public class ZipController {
         log.info("Searching all documents...");
 
         try {
-            final List<Zip> allZips = new ArrayList<>();
-            // get all zips from database here
+            final List<Zip> allZips = repository.findAll();
             long duration = (System.nanoTime() - startTime)/1000000;
 
             if (!allZips.isEmpty()) {
@@ -56,14 +56,12 @@ public class ZipController {
     }
 
     @RequestMapping(value = "/{text}", method = GET)
-    public ResponseEntity searchByText(@PathVariable String text) {
+    public ResponseEntity findAllByCityContains(@PathVariable String text) {
         long startTime = System.nanoTime();
         log.info("Searching given text...");
 
         try {
-
-            List<Zip> found = new ArrayList<>();
-            // get zips which contain {text}
+            List<Zip> found = repository.findAllByCityContains(text);
             long duration = (System.nanoTime() - startTime)/1000000;
 
             if(!found.isEmpty()) {

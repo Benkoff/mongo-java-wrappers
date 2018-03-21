@@ -59,7 +59,7 @@ public class ZipController {
     }
 
     @RequestMapping(value = "/{text}", method = GET)
-    public ResponseEntity searchByText(@PathVariable String text) {
+    public ResponseEntity findByCityContains(@PathVariable String text) {
         long startTime = System.nanoTime();
         log.info("Searching given text...");
 

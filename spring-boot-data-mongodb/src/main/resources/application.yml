@@ -5,3 +5,5 @@ spring:
     mongodb:
       host: 'localhost'
       database: 'drivers'
+      username: 'root'
+      password: 'root'

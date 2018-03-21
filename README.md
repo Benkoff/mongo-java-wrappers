@@ -17,7 +17,7 @@ From the directory where you've stored unzipped zips.json run in your command li
 ```mongoimport --drop -d drivers -c zips zips.json``` <br>
 This will create MongoDB database 'drivers' with 'zips' collection, which contains US zip codes. There are 29353 JSON objects in the database.
 
-Requesting Morphia Application in your browser ```http://localhost:8083/zips/hampton``` returns 31 entries for cities, which have 'hampton' in ther names, like this one:<br>
+Requesting Morphia Application in your browser ```http://localhost:8083/zips/hampton``` returns 38 entries for cities, which have 'hampton' in ther names, like this one:<br>
 ``` 
     {
         "id": "71744",
