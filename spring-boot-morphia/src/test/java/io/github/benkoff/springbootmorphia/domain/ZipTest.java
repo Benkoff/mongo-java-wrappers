@@ -1,14 +1,9 @@
 package io.github.benkoff.springbootmorphia.domain;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.github.benkoff.springbootmorphia.domain.Zip;
-import org.bson.types.ObjectId;
-import org.geojson.Point;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.Arrays;
 
 import static org.hamcrest.CoreMatchers.containsString;

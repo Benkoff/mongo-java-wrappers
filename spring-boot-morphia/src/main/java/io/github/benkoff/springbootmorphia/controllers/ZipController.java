@@ -53,7 +53,7 @@ public class ZipController {
 
                 return new ResponseEntity(allZips, HttpStatus.OK);
             } else {
-                log.error("...something wrong happend: NULL returned in {} ms", duration);
+                log.error("...something wrong happend: Nothing returned in {} ms", duration);
 
                 return new ResponseEntity(HttpStatus.NOT_FOUND);
             }
@@ -79,7 +79,7 @@ public class ZipController {
 
                 return new ResponseEntity(found, HttpStatus.OK);
             } else {
-                log.error("...something wrong happend: NULL returned in {} ms", duration);
+                log.error("...Nothing found in {} ms", duration);
 
                 return new ResponseEntity(HttpStatus.NOT_FOUND);
             }
