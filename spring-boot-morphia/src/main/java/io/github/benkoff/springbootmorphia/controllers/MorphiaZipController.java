@@ -23,11 +23,11 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 @Slf4j
 @RestController
 @RequestMapping("/zips")
-public class ZipController {
+public class MorphiaZipController {
     private final Datastore datastore;
     private Zip zips;
 
-    public ZipController() {
+    public MorphiaZipController() {
         Morphia morphia = new Morphia();
         // tell Morphia where to find your classes
         morphia.mapPackage("io.github.benkoff.springbootmorphia.domain");
@@ -71,7 +71,7 @@ public class ZipController {
 
         try {
             final Query<Zip> query = datastore.createQuery(Zip.class);
-            List<Zip> found = query.field("city").contains(val).asList();
+            final List<Zip> found = query.field("city").contains(val).asList();
             long duration = (System.nanoTime() - startTime)/1000000;
 
             if(!found.isEmpty()) {

@@ -1,3 +1,2 @@
 server:
     port: 8082
-    context-path: /spring-boot-mongo-java

@@ -1,7 +1,11 @@
 package io.github.benkoff.springbootmongojava.controllers;
 
-import io.github.benkoff.springbootmongojava.domain.Zip;
+import com.mongodb.MongoClient;
+import com.mongodb.ReadConcern;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
 import lombok.extern.slf4j.Slf4j;
+import org.bson.Document;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,20 +20,16 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 /**
  * Created by Ben Novikov on 2018 March 21
- *
- * JUST A SKELETON TO IMPLEMENT LATER
- *
  */
 @Slf4j
 @RestController
 @RequestMapping("/zips")
-public class ZipController {
-
-    private Zip zips;
-
-    public ZipController() {
-
-    }
+public class MongoClientZipController {
+    private final MongoClient client = new MongoClient("localhost", 27017);
+    private final MongoDatabase database = client.getDatabase("drivers")
+            .withReadConcern(ReadConcern.DEFAULT);
+    private final MongoCollection<Document> collection = database.getCollection("zips")
+            .withReadConcern(ReadConcern.DEFAULT);
 
     @RequestMapping(value = "/", method = GET)
     @ResponseBody
@@ -38,8 +38,7 @@ public class ZipController {
         log.info("Searching all documents...");
 
         try {
-            final List<Zip> allZips = new ArrayList<>();
-            // get all zips from database here
+            List<Document> allZips = collection.find().into(new ArrayList<Document>());
             long duration = (System.nanoTime() - startTime)/1000000;
 
             if (!allZips.isEmpty()) {
@@ -59,14 +58,13 @@ public class ZipController {
     }
 
     @RequestMapping(value = "/{text}", method = GET)
-    public ResponseEntity findByCityContains(@PathVariable String text) {
+    public ResponseEntity findAllByCityContains(@PathVariable String text) {
         long startTime = System.nanoTime();
         log.info("Searching given text...");
 
         try {
-
-            List<Zip> found = new ArrayList<>();
-            // get zips which contain {text}
+            Document filter = new Document("city", new Document("$regex", text));
+            List<Document> found = collection.find(filter).into(new ArrayList<Document>());
             long duration = (System.nanoTime() - startTime)/1000000;
 
             if(!found.isEmpty()) {
