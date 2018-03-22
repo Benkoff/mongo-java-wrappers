@@ -28,4 +28,6 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-data-mongodb')
 	compile('org.springframework.boot:spring-boot-starter-web')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
+	// https://mvnrepository.com/artifact/com.lordofthejars/nosqlunit-mongodb
+	compile group: 'com.lordofthejars', name: 'nosqlunit-mongodb', version: '1.0.0-rc.5'
 }

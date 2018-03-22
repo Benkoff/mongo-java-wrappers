@@ -1,4 +1,4 @@
-package io.github.benkoff.springbootmorphia.domain;
+package io.github.benkoff.springbootdatamongodb.domain;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Test;

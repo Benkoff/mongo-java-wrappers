@@ -12,5 +12,5 @@ import java.util.List;
 @Repository
 public interface ZipRepository extends MongoRepository<Zip, String> {
     public List<Zip> findAll();
-    public List<Zip> findAllByCityContains(String city);
+    public List<Zip> findAllByCityContainsIgnoreCase(String city);
 }

@@ -64,14 +64,14 @@ public class ZipController {
         }
     }
 
-    @RequestMapping(value = "/{text}", method = GET)
-    public ResponseEntity findAllByCityContains(@PathVariable String text) {
+    @RequestMapping(value = "/{val}", method = GET)
+    public ResponseEntity findAllByCityContains(@PathVariable String val) {
         long startTime = System.nanoTime();
         log.info("Searching given text...");
 
         try {
             final Query<Zip> query = datastore.createQuery(Zip.class);
-            List<Zip> found = query.field("city").contains(text).asList();
+            List<Zip> found = query.field("city").contains(val).asList();
             long duration = (System.nanoTime() - startTime)/1000000;
 
             if(!found.isEmpty()) {

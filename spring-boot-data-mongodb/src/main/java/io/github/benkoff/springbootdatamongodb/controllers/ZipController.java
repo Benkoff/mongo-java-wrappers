@@ -3,6 +3,7 @@ package io.github.benkoff.springbootdatamongodb.controllers;
 import io.github.benkoff.springbootdatamongodb.domain.Zip;
 import io.github.benkoff.springbootdatamongodb.repositories.ZipRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,6 +24,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 public class ZipController {
 
     private Zip zips;
+
     private ZipRepository repository;
 
     public ZipController(ZipRepository repository) {
@@ -61,7 +63,7 @@ public class ZipController {
         log.info("Searching given text...");
 
         try {
-            List<Zip> found = repository.findAllByCityContains(text);
+            List<Zip> found = repository.findAllByCityContainsIgnoreCase(text);
             long duration = (System.nanoTime() - startTime)/1000000;
 
             if(!found.isEmpty()) {
