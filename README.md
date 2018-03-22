@@ -1,5 +1,5 @@
 # MongDB Java Driver based wrappers mapping POJO
-The main Gradle built project contains 3 simple sub projects integrating POJO mapping: <br>
+The main Gradle built project contains 3 simple sub projects, integrating POJO mapping: <br>
 #### <a href = "https://projects.spring.io/spring-data-mongodb/">with Spring-Data-MongoDB, a part of the Spring-Data umbrella project</a>
 // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-mongodb <br>
 compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-mongodb', version: '2.0.0.RELEASE'
@@ -12,10 +12,12 @@ compile group: 'org.mongodb', name: 'mongo-java-driver', version: '3.6.3'
 // https://mvnrepository.com/artifact/org.mongodb.morphia/morphia <br>
 compile group: 'org.mongodb.morphia', name: 'morphia', version: '1.3.2'
 <br><br><br>
-Before you run any application download and unzip zips.zip file located in the root of the project.<br>
-From the directory where you've stored unzipped zips.json run in your command line:<br>
+* Lombok used in this project requires Annotation processing (Intellij IDEA: File-Settings-Build,Execution,Deployment) to be enabled.
+* Before you run any application, download and unzip zips.zip file, located in the root of the project.<br>
+From the directory, where you've stored unzipped zips.json, run in your command line:<br>
 ```mongoimport --drop -d drivers -c zips zips.json``` <br>
 This will create MongoDB database 'drivers' with 'zips' collection, which contains US zip codes. There are 29353 JSON objects in the database.
+* Running MongoDB (port=27017) is also required.
 
 Requesting Morphia Application in your browser ```http://localhost:8083/zips/hampton``` returns 38 entries for cities, which have 'hampton' in ther names, like this one:<br>
 ``` 
@@ -34,6 +36,6 @@ Requesting Morphia Application in your browser ```http://localhost:8083/zips/ham
 The same result will be obtained when changing port numbers:
 
 * ```http://localhost:8081/zips/hampton``` for Spring Data Realization;
-* ```http://localhost:8082/zips/hampton``` for clean MongoDB Java Driver implementation.
+* ```http://localhost:8082/zips/hampton``` for the clean MongoDB Java Driver querying.
 
-Calling ```http://localhost:8083/zips/``` (as well as for ports 8081 and 8082) will return all the documents. While it takes just a second or so to retrieve them from the database, it may take some time to load into your browser.
+Calling ```http://localhost:8083/zips/``` (as well as for the ports 8081 and 8082) will return all the documents. While it takes just a second or so to retrieve them from the database, it may take some time to load into your browser.
