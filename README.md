@@ -1,17 +1,17 @@
-# MongDB Drivers Comparison
-
-## <a href = "https://projects.spring.io/spring-data-mongodb/">Spring-Boot-Data-MongoDB</a>
+# MongDB Java Driver based wrappers mapping POJO
+The main Gradle built project contains 3 simple sub projects integrating POJO mapping: <br>
+#### <a href = "https://projects.spring.io/spring-data-mongodb/">with Spring-Data-MongoDB, a part of the Spring-Data umbrella project</a>
 // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-mongodb <br>
 compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-mongodb', version: '2.0.0.RELEASE'
 
-## <a href = "https://github.com/mongodb/mongo-java-driver">Mongo-Java-Driver</a>
+#### <a href = "https://github.com/mongodb/mongo-java-driver">without any mapping, just using a new version of basic Mongo-Java-Driver </a>
 // https://mvnrepository.com/artifact/org.mongodb/mongo-java-driver <br>
 compile group: 'org.mongodb', name: 'mongo-java-driver', version: '3.6.3'
 
-## <a href = "https://mongodb.github.io/morphia/">Morphia</a>
+#### <a href = "https://mongodb.github.io/morphia/">using MongDB Morphia POJO mapper</a>
 // https://mvnrepository.com/artifact/org.mongodb.morphia/morphia <br>
 compile group: 'org.mongodb.morphia', name: 'morphia', version: '1.3.2'
-
+<br><br><br>
 Before you run any application download and unzip zips.zip file located in the root of the project.<br>
 From the directory where you've stored unzipped zips.json run in your command line:<br>
 ```mongoimport --drop -d drivers -c zips zips.json``` <br>
